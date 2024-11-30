@@ -32,4 +32,18 @@ public class Question
     public required string question { get; set; }
     public required string correct_answer { get; set; }
     public required string[] incorrect_answers { get; set; }
+
+    public Question(string type, string difficulty, string category, string question, string correct_answer, string[] incorrect_answers)
+    {
+        this.type = System.Net.WebUtility.HtmlDecode(type);
+        this.difficulty = System.Net.WebUtility.HtmlDecode(difficulty);
+        this.category = System.Net.WebUtility.HtmlDecode(category);
+        this.question = System.Net.WebUtility.HtmlDecode(question);
+        this.correct_answer = System.Net.WebUtility.HtmlDecode(correct_answer);
+        this.incorrect_answers = new string[incorrect_answers.Length];
+        for (int i = 0; i < incorrect_answers.Length; i++)
+        {
+            this.incorrect_answers[i] = System.Net.WebUtility.HtmlDecode(incorrect_answers[i]);
+        }
+    }
 }
